@@ -1,9 +1,9 @@
-use Dev_Airbnb_ListingDetails;
+\c Dev_Airbnb_ListingDetails;
 
 drop table if exists refTheSpace;
 
 create table refTheSpace (
-	id INT,
+	id smallint,
 	theSpace TEXT
 );
 

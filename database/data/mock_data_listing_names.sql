@@ -1,13 +1,13 @@
-use Dev_Airbnb_ListingDetails;
+\c dev_airbnb_listingdetails;
 
 DROP TABLE tblListingLocation;
 CREATE TABLE IF NOT EXISTS tblListingLocation (
-id INT NOT NULL AUTO_INCREMENT,
+id SERIAL,
 ListingName VARCHAR(100) NOT NULL,
 ListingBlurb VARCHAR(50) NOT NULL,
 Neighborhood VARCHAR(100) NOT NULL,
 
-PRIMARY KEY(ID)
+PRIMARY KEY(id)
 );
 
 insert into tblListingLocation (id, ListingName, Neighborhood, ListingBlurb) values (1, 'Synchronised multimedia synergy', 'Pitangui', 'Frontline');

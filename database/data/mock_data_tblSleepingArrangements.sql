@@ -1,4 +1,4 @@
-use Dev_Airbnb_ListingDetails;
+\c Dev_Airbnb_ListingDetails;
 
 TRUNCATE TABLE tblSleepingArrangements;
 

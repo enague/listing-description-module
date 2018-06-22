@@ -51,27 +51,28 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`/listings/${listingId}/overview`)
       .then((results) => {
-        const loc = results.data[0].neighborhood;
-        const ln = results.data[0].listingName;
-        const lb = results.data[0].listingBlurb;
-        const intro = results.data[0].summary.split('\n\n');
-        const s1 = results.data[0].theSpace.split('\n\n');
-        const s2 = results.data[0].guestAccess.split('\n\n');
-        const s3 = results.data[0].interactionWithGuests.split('\n\n');
-        const s4 = results.data[0].otherThingsToNote.split('\n\n');
-        const br = results.data[0].noOfBedrooms;
-        const bd = results.data[0].noOfBeds;
-        const ba = results.data[0].noOfBaths;
-        const gs = results.data[0].noOfGuests;
-        const hh1 = results.data[0].homeHighlights1;
-        const hh2 = results.data[0].homeHighlights2;
-        const hh3 = results.data[0].homeHighlights3;
+        console.log(results.data.rows[0])
+        const loc = results.data.rows[0].neighborhood;
+        const ln = results.data.rows[0].listingname;
+        const lb = results.data.rows[0].listingblurb;
+        const intro = results.data.rows[0].summary.split(' ');
+        const s1 = results.data.rows[0].thespace.split(' ');
+        const s2 = results.data.rows[0].guestaccess.split(' ');
+        const s3 = results.data.rows[0].interactionwithguests.split(' ');
+        const s4 = results.data.rows[0].otherthingstonote.split(' ');
+        const br = results.data.rows[0].noofbedrooms;
+        const bd = results.data.rows[0].noofbeds;
+        const ba = results.data.rows[0].noofbaths;
+        const gs = results.data.rows[0].noofguests;
+        const hh1 = results.data.rows[0].homehighlights1;
+        const hh2 = results.data.rows[0].homehighlights2;
+        const hh3 = results.data.rows[0].homehighlights3;
 
         this.setState({
           loc,
           ln,
           lb,
-          overview: results.data[0],
+          overview: results.data.rows[0],
           intro,
           s1,
           s2,
@@ -91,7 +92,8 @@ class App extends React.Component {
       });
     axios.get(`/listings/${listingId}/arrangements`)
       .then((results) => {
-        const sleep = results.data;
+      console.log(results.data.rows[0])
+        const sleep = results.data.rows[0];
         this.setState({
           sleep,
         }, () => {

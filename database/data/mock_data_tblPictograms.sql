@@ -1,4 +1,4 @@
-use Dev_Airbnb_ListingDetails;
+\c dev_airbnb_listingdetails;
 
 insert into tblPictograms (imgName, imgData ) VALUES ('bathtub', 'placeholder for data');
 insert into tblPictograms (imgName, imgData ) VALUES ('bath', 'placeholder for data');
