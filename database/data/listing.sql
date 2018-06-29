@@ -19,7 +19,7 @@
 -- Current Database: `dev_airbnb_listingdetails`
 --
 
--- CREATE DATABASE /*!32312 IF NOT EXISTS*/ dev_airbnb_listingdetails /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ dev_airbnb_listingdetails /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 \c dev_airbnb_listingdetails;
 
@@ -30,13 +30,13 @@
 -- DROP TABLE IF EXISTS refAmenities;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE refAmenities (
---   id bigint,
---   category varchar(100) NOT NULL,
---   subCategory varchar(100) NOT NULL,
---   additionalComments varchar(100) DEFAULT NULL,
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE refAmenities (
+  id bigint,
+  category varchar(100) NOT NULL,
+  subCategory varchar(100) NOT NULL,
+  additionalComments varchar(100) DEFAULT NULL,
+  PRIMARY KEY (id)
+) 
 
 -- ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -58,10 +58,10 @@
 -- DROP TABLE IF EXISTS refTheSpace;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE refTheSpace (
---   id bigint,
---   theSpace text
--- ) 
+CREATE TABLE refTheSpace (
+  id bigint,
+  theSpace text
+) 
 -- ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -81,15 +81,15 @@
 -- DROP TABLE IF EXISTS tblAmenities;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE tblAmenities (
---   id bigint,
---   listingID smallint,
---   pictogramID smallint,
---   category varchar(100) NOT NULL,
---   subCategory varchar(100) NOT NULL,
---   additionalComments varchar(100) DEFAULT NULL,
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE tblAmenities (
+  id bigint,
+  listingID smallint,
+  pictogramID smallint,
+  category varchar(100) NOT NULL,
+  subCategory varchar(100) NOT NULL,
+  additionalComments varchar(100) DEFAULT NULL,
+  PRIMARY KEY (id)
+) 
 -- ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -109,13 +109,13 @@
 -- DROP TABLE IF EXISTS tblListingLocation;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE tblListingLocation (
---   id bigint,
---   ListingName varchar(100) NOT NULL,
---   ListingBlurb varchar(50) NOT NULL,
---   Neighborhood varchar(100) NOT NULL,
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE tblListingLocation (
+  id bigint,
+  ListingName varchar(100) NOT NULL,
+  ListingBlurb varchar(50) NOT NULL,
+  Neighborhood varchar(100) NOT NULL,
+  PRIMARY KEY (id)
+) 
 -- ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -136,23 +136,23 @@
 -- DROP TABLE IF EXISTS tblListingOverview;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE tblListingOverview (
---   id bigint,
---   summary text,
---   theSpace text,
---   guestAccess text,
---   interactionWithGuests text,
---   otherThingsToNote text,
---   homeHighlights1 text,
---   homeHighlights2 text,
---   homeHighlights3 text,
---   houseRules text,
---   noOfGuests smallint DEFAULT '0',
---   noOfBeds smallint DEFAULT '0',
---   noOfBedrooms smallint DEFAULT '0',
---   noOfBaths smallint DEFAULT '0',
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE tblListingOverview (
+  id bigint,
+  summary text,
+  theSpace text,
+  guestAccess text,
+  interactionWithGuests text,
+  otherThingsToNote text,
+  homeHighlights1 text,
+  homeHighlights2 text,
+  homeHighlights3 text,
+  houseRules text,
+  noOfGuests smallint DEFAULT '0',
+  noOfBeds smallint DEFAULT '0',
+  noOfBedrooms smallint DEFAULT '0',
+  noOfBaths smallint DEFAULT '0',
+  PRIMARY KEY (id)
+) 
 -- ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,12 +172,12 @@
 -- DROP TABLE IF EXISTS tblPictograms;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE tblPictograms (
---   id bigint,
---   imgName varchar(100) NOT NULL,
---   imgData bytea,
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE tblPictograms (
+  id bigint,
+  imgName varchar(100) NOT NULL,
+  imgData bytea,
+  PRIMARY KEY (id)
+) 
 -- ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -198,14 +198,14 @@
 -- DROP TABLE IF EXISTS tblSleepingArrangements;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE tblSleepingArrangements (
---   id bigint,
---   listingID bigint,
---   roomName varchar(100) NOT NULL,
---   noOfBeds smallint DEFAULT '0',
---   typeOfBed varchar(100) DEFAULT NULL,
---   PRIMARY KEY (id)
--- ) 
+CREATE TABLE tblSleepingArrangements (
+  id bigint,
+  listingID bigint,
+  roomName varchar(100) NOT NULL,
+  noOfBeds smallint DEFAULT '0',
+  typeOfBed varchar(100) DEFAULT NULL,
+  PRIMARY KEY (id)
+) 
 -- ENGINE=InnoDB AUTO_INCREMENT=484 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

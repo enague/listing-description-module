@@ -8,6 +8,9 @@
 /database/data/faker_tblPictograms.csv
 /database/data/faker_tblSleepingArrangements.csv
 /database/data/faker_theSpace.csv
+/database/data/faker_couch.csv
+.env
+config.js
 
 ## Webpack ##
 bundle-description.js

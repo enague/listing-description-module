@@ -92,8 +92,8 @@ class App extends React.Component {
       });
     axios.get(`/listings/${listingId}/arrangements`)
       .then((results) => {
-      console.log(results.data.rows[0])
-        const sleep = results.data.rows[0];
+      console.log(results.data.rows)
+        const sleep = results.data.rows;
         this.setState({
           sleep,
         }, () => {
