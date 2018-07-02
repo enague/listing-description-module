@@ -2,6 +2,15 @@
 .DS_Store
 /node_modules
 /images
+/database/data/faker_listing_names.csv
+/database/data/faker_tblAmenities.csv
+/database/data/faker_tblOverview.csv
+/database/data/faker_tblPictograms.csv
+/database/data/faker_tblSleepingArrangements.csv
+/database/data/faker_theSpace.csv
+/database/data/faker_couch.csv
+.env
+config.js
 
 ## Webpack ##
 bundle-description.js

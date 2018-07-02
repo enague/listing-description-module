@@ -1,4 +1,4 @@
-use Dev_Airbnb_ListingDetails;
+\c dev_airbnb_listingdetails;
 
 insert into tblListingOverview (id, summary, theSpace, guestAccess, interactionWithGuests, otherThingsToNote, homeHighlights1, homeHighlights2, homeHighlights3, houseRules, noOfGuests, noOfBeds, noOfBedrooms, noOfBaths) values (1, 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
 
