@@ -11,6 +11,8 @@
 /database/data/faker_couch.csv
 .env
 config.js
+docker-compose.yml
+newrelic.js
 
 ## Webpack ##
 bundle-description.js

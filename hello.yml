@@ -1,0 +1,32 @@
+config:
+  target: "http://localhost:3002"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+scenarios:
+  - flow:
+    # - loop:
+    - get:
+        url: "/listings/{{$randomNumber(1,10000000)}}/overview/"
+    - get:
+        url: "/listings/{{$randomNumber(1,10000000)}}/arrangements/"
+      # - post:
+      #     url: "/listings/"
+      #     json:
+      #         id: "${{randomNumber(10000000, 1000000000000000000000000000)}}"
+      #         summary: "andslnslkandsnl"
+      #         theSpace: "andslnslkandsnl"
+      #         guestAccess: "andslnslkandsnl"
+      #         interactionWithGuests: "andslnslkandsnl"
+      #         otherThingsToNote: "andslnslkandsnl"
+      #         homehighlights1: "andslnslkandsnl"
+      #         homehighlights2: "andslnslkandsnl"
+      #         homehighlights3: "andslnslkandsnl"
+      #         houserules: "andslnslkandsnl"
+      #         noOfGuests: 3
+      #         noOfBedrooms: 2
+      #         noOfBeds: 8
+      #         noOfBaths: 10
+      # count: 10
+
+
