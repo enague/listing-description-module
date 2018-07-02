@@ -1,37 +1,24 @@
+const app = require("./app.js");
 const cluster = require("cluster");
-
+const numCPUs = require("os").cpus().length;
+const PORT = 3002;
 if (cluster.isMaster) {
-	let numWorkers = require("os").cpus().length;
-	console.log("Master cluster setting up " + numWorkers + " workers...");
-	for (let i = 0; i < numWorkers; i += 1) {
+	// Fork workers.
+	for (let i = 0; i < numCPUs; i++) {
 		cluster.fork();
 	}
-
-	cluster.on("online", worker => {
-		console.log("Worker " + worker.process.pid + " is online");
-	});
-
+	//Check if work id is died
 	cluster.on("exit", (worker, code, signal) => {
-		console.log(
-			"Worker " +
-				worker.process.pid +
-				" died with code: " +
-				code +
-				", and signal: " +
-				signal
-		);
-		console.log("Starting a new worker");
-		cluster.fork();
+		console.log(`worker ${worker.process.pid} died`);
 	});
 } else {
-	const app = require("./app");
-	app.all("/*", (req, res) => {
-		res.send("process " + process.pid + " says hello!").end();
+	// This is Workers can share any TCP connection
+	// It will be initialized using express
+
+	app.get("/cluster", (req, res) => {
+		let worker = cluster.worker.id;
+		res.send(`Running on worker with id ==> ${worker}`);
 	});
 
-	const server = app.listen(3002, () => {
-		console.log(
-			"Process " + process.pid + " is listening to all incoming requests"
-		);
-	});
+	app.listen(PORT, () => console.log(`listening on port ${PORT}!`));
 }

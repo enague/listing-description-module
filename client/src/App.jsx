@@ -1,11 +1,11 @@
-import React from 'react';
-import axios from 'axios';
-import Styled from 'styled-components';
-import Overview from './Overview.jsx';
-import Highlights from './Highlights.jsx';
-import Summary from './Summary.jsx';
-import Amenities from './Amenities.jsx';
-import SleepingArrangements from './SleepingArrangements.jsx';
+import React from "react";
+import axios from "axios";
+import Styled from "styled-components";
+import Overview from "./Overview.jsx";
+import Highlights from "./Highlights.jsx";
+import Summary from "./Summary.jsx";
+import Amenities from "./Amenities.jsx";
+import SleepingArrangements from "./SleepingArrangements.jsx";
 
 const Div2h22gn = Styled.div`
   margin-left: -8px !important;
@@ -22,44 +22,44 @@ const Div1kzvqab3 = Styled.div`
 const Div76irmj = Styled.div`
   border-bottom: 1px solid #DBDBDB !important;
 `;
-const listingId = window.location.pathname.split('/')[2];
+const listingId = window.location.pathname.split("/")[2];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       overview: [],
-      loc: '',
-      ln: '',
-      lb: '',
+      loc: "",
+      ln: "",
+      lb: "",
       intro: [],
       s1: [],
       s2: [],
       s3: [],
       s4: [],
-      br: '',
-      bd: '',
-      ba: '',
-      gs: '',
+      br: "",
+      bd: "",
+      ba: "",
+      gs: "",
       sleep: [],
       roomTally: 0,
-      rightClicksAvailable: 0,
+      rightClicksAvailable: 0
     };
     this.tallyUpRoomCounts = this.tallyUpRoomCounts.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`/listings/${listingId}/overview`)
-      .then((results) => {
-        console.log(results.data.rows[0])
+    axios
+      .get(`/listings/${listingId}/overview`)
+      .then(results => {
         const loc = results.data.rows[0].neighborhood;
         const ln = results.data.rows[0].listingname;
         const lb = results.data.rows[0].listingblurb;
-        const intro = results.data.rows[0].summary.split(' ');
-        const s1 = results.data.rows[0].thespace.split(' ');
-        const s2 = results.data.rows[0].guestaccess.split(' ');
-        const s3 = results.data.rows[0].interactionwithguests.split(' ');
-        const s4 = results.data.rows[0].otherthingstonote.split(' ');
+        const intro = results.data.rows[0].summary.split(" ");
+        const s1 = results.data.rows[0].thespace.split(" ");
+        const s2 = results.data.rows[0].guestaccess.split(" ");
+        const s3 = results.data.rows[0].interactionwithguests.split(" ");
+        const s4 = results.data.rows[0].otherthingstonote.split(" ");
         const br = results.data.rows[0].noofbedrooms;
         const bd = results.data.rows[0].noofbeds;
         const ba = results.data.rows[0].noofbaths;
@@ -84,22 +84,24 @@ class App extends React.Component {
           gs,
           hh1,
           hh2,
-          hh3,
+          hh3
         });
       })
-      .catch((error) => {
+      .catch(error => {
         throw error;
       });
-    axios.get(`/listings/${listingId}/arrangements`)
-      .then((results) => {
-      console.log(results.data.rows)
-        const sleep = results.data.rows;
-        this.setState({
-          sleep,
-        }, () => {
+    axios.get(`/listings/${listingId}/arrangements`).then(results => {
+      console.log(results.data.rows);
+      const sleep = results.data.rows;
+      this.setState(
+        {
+          sleep
+        },
+        () => {
           this.tallyUpRoomCounts();
-        });
-      });
+        }
+      );
+    });
   }
   tallyUpRoomCounts() {
     let tally = 0;
@@ -108,13 +110,13 @@ class App extends React.Component {
     }
     this.setState({
       roomTally: tally,
-      rightClicksAvailable: (tally - 3) < 0 ? 0 : (tally - 3),
+      rightClicksAvailable: tally - 3 < 0 ? 0 : tally - 3
     });
   }
   render() {
     return (
-      <Div2h22gn className='2h22gn'>
-        <Div1kzvqab3 className='1kzvqab3'>
+      <Div2h22gn className="2h22gn">
+        <Div1kzvqab3 className="1kzvqab3">
           <div>
             <div>
               <Summary
@@ -139,17 +141,17 @@ class App extends React.Component {
                 section4={this.state.s4}
               />
             </div>
-              {/* dividing line */}
-            <div style={{ marginTop: '24px', marginBottom: '24px' }}>
-              <Div76irmj className='76irmj'></Div76irmj>
+            {/* dividing line */}
+            <div style={{ marginTop: "24px", marginBottom: "24px" }}>
+              <Div76irmj className="76irmj" />
             </div>
             <div>
               {/* Amenities */}
               <Amenities />
             </div>
             {/* dividing line */}
-            <div style={{ marginTop: '24px', marginBottom: '24px' }}>
-              <Div76irmj className='76irmj'></Div76irmj>
+            <div style={{ marginTop: "24px", marginBottom: "24px" }}>
+              <Div76irmj className="76irmj" />
             </div>
             <div>
               {/* Sleeping Arrangements */}
@@ -160,8 +162,8 @@ class App extends React.Component {
               />
             </div>
             {/* dividing line */}
-            <div style={{ marginTop: '24px', marginBottom: '24px' }}>
-              <Div76irmj className='76irmj'></Div76irmj>
+            <div style={{ marginTop: "24px", marginBottom: "24px" }}>
+              <Div76irmj className="76irmj" />
             </div>
           </div>
         </Div1kzvqab3>

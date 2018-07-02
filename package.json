@@ -1,14 +1,15 @@
 {
   "name": "listing-description-module",
   "version": "1.0.0",
-  "description": "> Front End capstone project mocking a semi-functional Airbnb replica website.",
+  "description":
+    "> Front End capstone project mocking a semi-functional Airbnb replica website.",
   "main": ".babelrc.js",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start-server": "nodemon server/server.js",
+    "start": "node server/server.js",
     "test": "jest",
     "build": "npx webpack -d --watch"
   },
