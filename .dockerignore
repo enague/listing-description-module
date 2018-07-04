@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+.DS_Store
+/node_modules
+/database/data/faker_listing_names.csv
+/database/data/faker_tblAmenities.csv
+/database/data/faker_tblOverview.csv
+/database/data/faker_tblPictograms.csv
+/database/data/faker_tblSleepingArrangements.csv
+/database/data/faker_theSpace.csv
+/database/data/faker_couch.csv
+.env
+docker-compose.yml
