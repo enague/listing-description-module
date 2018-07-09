@@ -1,13 +1,15 @@
-const { Client } = require("pg");
+const { Pool, Client } = require("pg");
+const { HOST, POSTGRES_USER, POSTGRES_PASSWORD } = require("../config.js");
 
-const client = new Client({
-  host: "localhost",
-  user: "kianna",
-  database: "dev_airbnb_listingdetails",
+const pool = new Pool({
+  host: HOST,
+  user: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+  database: "airbnb_listingdetails",
   port: 5432
 });
 
-client.connect();
+pool.connect();
 
 // `SELECT ov.id, ov.summary, ov.theSpace, ov.guestAccess, ov.interactionWithGuests, ov.otherThingsToNote,
 //                  ov.noOfGuests, ov.noOfBedrooms, ov.noOfBeds, ov.noOfBaths, loc.listingName, loc.listingBlurb, loc.neighborhood,
@@ -18,8 +20,12 @@ client.connect();
 // `SELECT id, summary, theSpace, guestAccess, interactionWithGuests, otherThingsToNote, noOfGuests, noOfBedrooms, noOfBeds, noOfBaths, listingName, listingBlurb, neighborhood, homeHighlights1, homeHighlights2, homeHighlights3 FROM matview_overview WHERE id = ${listingId} ;`
 
 const getListingOverview = (listingId, callback) => {
-  const sql = `SELECT id, summary, theSpace, guestAccess, interactionWithGuests, otherThingsToNote, noOfGuests, noOfBedrooms, noOfBeds, noOfBaths, listingName, listingBlurb, neighborhood, homeHighlights1, homeHighlights2, homeHighlights3 FROM matview_overview WHERE id = ${listingId} ;`;
-  client.query(sql, (err, results) => {
+  const sql = `SELECT ov.id, ov.summary, ov.theSpace, ov.guestAccess, ov.interactionWithGuests, ov.otherThingsToNote,
+                 ov.noOfGuests, ov.noOfBedrooms, ov.noOfBeds, ov.noOfBaths, loc.listingName, loc.listingBlurb, loc.neighborhood,
+                 ov.homeHighlights1, ov.homeHighlights2, ov.homeHighlights3
+               FROM tblListingOverview as ov
+               LEFT JOIN tblListingLocation AS loc ON ov.id = loc.id WHERE ov.id = ${listingId} ;`;
+  pool.query(sql, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -30,7 +36,7 @@ const getListingOverview = (listingId, callback) => {
 
 const getSleepingDetails = (listingID, callback) => {
   const sql = `SELECT sd.roomName, sd.noOfBeds, sd.typeOfBed FROM tblSleepingArrangements as sd WHERE sd.listingId = ${listingID} ;`;
-  client.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -74,7 +80,7 @@ const createListing = (listing, callback) => {
                  noOfBaths
               ) VALUES 
               ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`;
-  client.query(sql, values, (err, results) => {
+  pool.query(sql, values, (err, results) => {
     if (err) {
       console.log("err", err.stack);
     } else {
@@ -87,7 +93,7 @@ const updateListing = (listing, callback) => {
   const sql = `UPDATE tbllistingOverview SET noofbeds=${
     listing.noOfBeds
   } WHERE id=${listing.id}`;
-  client.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -98,7 +104,7 @@ const updateListing = (listing, callback) => {
 
 const deleteListing = (id, callback) => {
   const sql = `DELETE FROM tbllistingOverview WHERE id=${id}`;
-  client.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
